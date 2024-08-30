@@ -11,7 +11,10 @@ import seaborn as sns
 iris = load_iris()
 X = iris.data
 y = iris.target
-mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+import dagshub
+dagshub.init(repo_owner='NaumanRafique12', repo_name='dagshub_demo', mlflow=True)
+
+mlflow.set_tracking_uri("https://github.com/NaumanRafique12/dagshub_demo.git")
 mlflow.set_experiment(experiment_name="Random_Forest_New")
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
