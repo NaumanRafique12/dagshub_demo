@@ -16,11 +16,13 @@ dagshub.init(repo_owner='NaumanRafique12', repo_name='dagshub_demo', mlflow=True
 
 mlflow.set_tracking_uri("https://github.com/NaumanRafique12/dagshub_demo.git")
 mlflow.set_experiment(experiment_name="Random_Forest_New")
+n_estimators= 10
+max_depth=2
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 with mlflow.start_run(run_name="all_artifacts_file_model_png"):
     # Initialize the Random Forest model
-    rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+    rf_model = RandomForestClassifier(n_estimators=n_estimators,max_depth=max_depth, random_state=42)
 
     # Train the model
     rf_model.fit(X_train, y_train)
